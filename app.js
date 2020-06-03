@@ -5,7 +5,13 @@ const todoList = document.querySelector('.todo-list');
 const filterOption = document.querySelector('.filter-todo');
 
 //Event Listeners
-document.addEventListener('DOMContentLoaded', getTodos);
+if( document.readyState !== 'loading' ) {
+    getTodos();
+} else {
+    document.addEventListener('DOMContentLoaded', function () {
+        getTodos();
+    });
+}
 todoButton.addEventListener('click', addTodo);
 todoList.addEventListener('click', deleteCheck);
 filterOption.addEventListener('click', filterTodo);
@@ -98,8 +104,8 @@ function saveLocalTodos(todo) {
 }
 
 function getTodos() {
-  let todos;
   //CHECK: already have something saved there?
+  let todos;
   if(localStorage.getItem('todos') === null) {
     todos = [];
   } else {
@@ -129,12 +135,14 @@ function getTodos() {
   })
 }
 
-funciton removeLocalTodos(todo) {
+function removeLocalTodos(todo) {
   //CHECK: already have something saved there?
   if(localStorage.getItem('todos') === null) {
     todos = [];
   } else {
     todos = JSON.parse(localStorage.getItem('todos'));
   }
-  const todoIndex =
+  const todoIndex = todo.children[0].innerText;
+  todos.splice(todos.indexOf(todoIndex), 1);
+  localStorage.setItem('todos', JSON.stringify(todos));
 }
