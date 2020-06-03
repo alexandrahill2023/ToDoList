@@ -1,4 +1,5 @@
 # ToDoList
-Interactive To Do List using JS, HTML, and CSS
+Interactive To Do List using JS, HTML, and CSS.
+Saves locally, so refreshing/closing page will not delete content.
 
-Linked to Google font 'Poppins' and font-awesome for icons.
+(linked to Google font 'Poppins' and font-awesome for icons)
